@@ -1,8 +1,24 @@
 
 [
-  "Verduras",
-  "Frutas",
-  "Congelados",
-  "Especias"
-  ]
+  {  
+    "id":1,
+    "title": "Frutas",
+    "img": "frutas.png"
+},
+{  
+    "id":2,
+    "title": "Verduras",
+    "img": "verduras.png"
+},
+{  
+    "id":3,
+    "title": "Congelados",
+    "img": "congelados1.png"
+},
+{  
+    "id":4,
+    "title": "Especias",
+    "img": "especias.png"
+}
+]
 

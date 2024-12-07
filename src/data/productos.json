@@ -4,7 +4,7 @@
     "title": "Manzanas",
     "description": "Manzanas jugosas y crujientes, perfectas para comer como snack.",
     "price": 10,
-    "category": "frutas",
+    "category": "Frutas",
     "thumbnail": ".jpg",
     "images": ""
   },
@@ -13,7 +13,7 @@
     "title": "Bananas",
     "description": "Bananas dulces y orgánicas, ideales para batidos y snacks.",
     "price": 8,
-    "category": "frutas",
+    "category": "Frutas",
     "thumbnail": "",
     "images": ""
   },
@@ -22,7 +22,7 @@
     "title": "Zanahorias",
     "description": "Zanahorias crujientes y frescas, perfectas para ensaladas y sopas.",
     "price": 6,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -31,7 +31,7 @@
     "title": "Espinacas",
     "description": "Espinacas orgánicas, ricas en vitaminas y perfectas para ensaladas.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -40,7 +40,7 @@
     "title": "Frutillas",
     "description": "Frutillas recién cosechadas, dulces y jugosas.",
     "price": 12,
-    "category": "frutas",
+    "category": "Frutas",
     "thumbnail": "",
     "images": ""
   },
@@ -49,7 +49,7 @@
     "title": "Tomates",
     "description": "Tomates maduros y jugosos, ideales para ensaladas y salsas.",
     "price": 7,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -58,7 +58,7 @@
     "title": "Uvas verdes",
     "description": "Uvas verdes sin semillas, perfectas como snack o para postres.",
     "price": 15,
-    "category": "frutas",
+    "category": "Frutas",
     "thumbnail": "",
     "images": ""
   },
@@ -67,7 +67,7 @@
     "title": "Lechuga",
     "description": "Lechuga verde fresca, ideal para ensaladas.",
     "price": 4,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -76,7 +76,7 @@
     "title": "Anana",
     "description": "Anana dulces y jugosas, perfectas para postres y batidos.",
     "price": 18,
-    "category": "frutas",
+    "category": "Frutas",
     "thumbnail": "",
     "images": ""
   },
@@ -85,7 +85,7 @@
     "title": "Pepinos",
     "description": "Pepinos crujientes y refrescantes, ideales para ensaladas.",
     "price": 6,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -94,7 +94,7 @@
     "title": "Sandía",
     "description": "Sandía jugosa y dulce, ideal para días calurosos.",
     "price": 20,
-    "category": "frutas",
+    "category": "Frutas",
     "thumbnail": "",
     "images": ""
   },
@@ -103,7 +103,7 @@
     "title": "Cebollas",
     "description": "Cebollas frescas y versátiles, perfectas para cocinar.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -112,7 +112,7 @@
     "title": "Papas",
     "description": "Papa lavada y sepillada perfecta para ensaladas.",
     "price": 15,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -121,7 +121,7 @@
     "title": "Morron rojo",
     "description": "Morron rojo ideal para salteados y salsas varias.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -130,7 +130,7 @@
     "title": "Naranja",
     "description": "Naranja de ombligo, ideal para jugos.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -139,7 +139,7 @@
     "title": "Kiwi",
     "description": "Kiwi perfecto para las mejores ensaladas de frutas.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -148,7 +148,7 @@
     "title": "Zapallo anco",
     "description": "Zapallo anco con pura pulpa.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -157,7 +157,7 @@
     "title": "Zapallito verde",
     "description": "Zapallito verde, grande, ideal para cocinarlos rellenos.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -166,7 +166,7 @@
     "title": "Arandanos",
     "description": "Arandanos ideales para tartas de frutos rojos",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -175,7 +175,7 @@
     "title": "Pera",
     "description": "Pera de estación.",
     "price": 5,
-    "category": "verduras",
+    "category": "Verduras",
     "thumbnail": "",
     "images": ""
   },
@@ -184,7 +184,7 @@
    "title": "Canela en Rama", 
    "description": "Canela natural en rama, ideal para infusiones y postres.", 
    "price": 12, 
-   "category": "especias", 
+   "category": "Especias", 
    "thumbnail": "", 
    "images": ""},
    {
@@ -192,7 +192,7 @@
    "title": "Pimienta Negra",
      "description": "Pimienta negra molida, ideal para sazonar carnes y guisos.", 
      "price": 15, 
-     "category": "especias", 
+     "category": "Especias", 
      "thumbnail": "", 
      "images":""},
     {
@@ -200,7 +200,7 @@
      "title": "Cúrcuma en Polvo", 
      "description": "Cúrcuma molida, conocida por sus propiedades antiinflamatorias.", 
      "price": 18, 
-     "category": "especias", 
+     "category": "Especias", 
      "thumbnail": "", 
      "images": ""},
     {
@@ -208,7 +208,7 @@
     "title": "Comino",
     "description": "Comino en polvo, excelente para guisos y platillos mexicanos.",
     "price": 9, 
-    "category": "especias",
+    "category": "Especias",
     "thumbnail": "",
     "images":""},
     {
@@ -216,7 +216,7 @@
     "title": "Orégano",
      "description": "Orégano seco, ideal para darle sabor a pizzas, pastas y ensaladas.", 
      "price": 7, 
-     "category": "especias", 
+     "category": "Especias", 
      "thumbnail": "", 
      "images": ""},
     {
@@ -224,7 +224,7 @@
      "title": "Laurel", 
      "description": "Hojas de laurel secas, usadas para aromatizar caldos, sopas y guisos.", 
      "price": 5, 
-     "category": "especias", 
+     "category": "Especias", 
      "thumbnail": "",
      "images": ""},
     {
@@ -232,7 +232,7 @@
     "title": "Tomillo", 
     "description": "Tomillo seco, perfecto para carnes, sopas y ensaladas.", 
     "price": 11, 
-    "category": "especias", 
+    "category": "Especias", 
     "thumbnail": "", 
     "images": ""},
   {
@@ -240,7 +240,7 @@
     "title": "Mezcla de Verduras Congeladas",
     "description": "Mezcla congelada de zanahorias, guisantes, maíz y papas.",
     "price": 7,
-    "category": "congelados",
+    "category": "Congelados",
     "thumbnail": "",
     "images": ""
   },
@@ -249,7 +249,7 @@
     "title": "Brócoli Congelado",
     "description": "Brócoli congelado, ideal para acompañar platos principales.",
     "price": 5,
-    "category": "congelados",
+    "category": "Congelados",
     "thumbnail": "",
     "images":""
   },
@@ -258,7 +258,7 @@
     "title": "Espinaca Congelada",
     "description": "Espinaca congelada, lista para preparar sopas o guisos.",
     "price": 4,
-    "category": "congelados",
+    "category": "Congelados",
     "thumbnail": "",
     "images": ""
   },
@@ -268,7 +268,7 @@
     "title": "Choclo Congelado",
     "description": "Choclo congelado, ideal para preparar sopas o platos vegetarianos.",
     "price": 5,
-    "category": "congelados",
+    "category": "Congelados",
     "thumbnail": "",
     "images": ""
   }
