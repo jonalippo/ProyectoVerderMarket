@@ -1,25 +1,22 @@
 import { StyleSheet, View, Text } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import Header from "../components/Header";
 import Search from "../components/Search";
-import Product from "../components/Product";
+import CardProduct from "../components/CardProduct";
 import Banner from "../components/Banner";
 import Categories from "../components/Categories";
-import { colors } from "../../global/Theme";
 
 export default function Home() {
   return (
     <View style={style.container}>
-      <StatusBar style="light" backgroundColor={colors.primary} />
       <Header title="Home" />
       <Search />
       <Banner />
       <Categories />
       <Text style={style.title}>Productos</Text>
       <View style={style.containerCard}>
-        <Product />
-        <Product />
-        <Product />
+        <CardProduct />
+        <CardProduct />
+        <CardProduct />
       </View>
     </View>
   );

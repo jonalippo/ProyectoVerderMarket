@@ -1,0 +1,274 @@
+[
+  {
+    "id": 1,
+    "title": "Manzanas",
+    "description": "Manzanas jugosas y crujientes, perfectas para comer como snack.",
+    "price": 10,
+    "category": "Frutas",
+    "thumbnail": "../../assets/manzanaRoja.png",
+    "images": "../../assets/manzanaRoja.png"
+  },
+  {
+    "id": 2,
+    "title": "Bananas",
+    "description": "Bananas dulces y orgánicas, ideales para batidos y snacks.",
+    "price": 8,
+    "category": "Frutas",
+    "thumbnail": "../../assets/banana.png",
+    "images": "../../assets/banana.png"
+  },
+  {
+    "id": 3,
+    "title": "Zanahorias",
+    "description": "Zanahorias crujientes y frescas, perfectas para ensaladas y sopas.",
+    "price": 6,
+    "category": "Verduras",
+    "thumbnail": "../../assets/zanahorias.png",
+    "images": "../../assets/zanahorias.png"
+  },
+  {
+    "id": 4,
+    "title": "Lechuga",
+    "description": "Lechuga orgánicas, ricas en vitaminas y perfectas para ensaladas.",
+    "price": 5,
+    "category": "Verduras",
+    "thumbnail": "../../assets/lechuga.png",
+    "images": "../../assets/lechuga.png"
+  },
+  {
+    "id": 5,
+    "title": "Frutillas",
+    "description": "Frutillas recién cosechadas, dulces y jugosas.",
+    "price": 12,
+    "category": "Frutas",
+    "thumbnail": "../../assets/frutillas.png",
+    "images": "../../assets/frutillas.png"
+  },
+  {
+    "id": 6,
+    "title": "Tomates",
+    "description": "Tomates maduros y jugosos, ideales para ensaladas y salsas.",
+    "price": 7,
+    "category": "Verduras",
+    "thumbnail": "../../assets/tomate.png",
+    "images": "../../assets/tomate.png"
+  },
+  {
+    "id": 7,
+    "title": "Frutos Rojos",
+    "description": "Frutos Rojos congelados sin semillas, perfectos para postres.",
+    "price": 15,
+    "category": "Congelados",
+    "thumbnail": "../../assets/frutosRojos.png",
+    "images": "../../assets/frutosRojos.png"
+  },
+  {
+    "id": 8,
+    "title": "Cebolla",
+    "description": "Cebolla grande, ideal para ensaladas ysalteados.",
+    "price": 4,
+    "category": "Verduras",
+    "thumbnail": "../../assets/cebollas.png",
+    "images": "../../assets/cebollas.png"
+  },
+  {
+    "id": 9,
+    "title": "Anana",
+    "description": "Anana dulces y jugosas, perfectas para postres y batidos.",
+    "price": 18,
+    "category": "Frutas",
+    "thumbnail": "../../assets/anana.png",
+    "images": "../../assets/anana.png"
+  },
+  {
+    "id": 10,
+    "title": "Pepinos",
+    "description": "Pepinos crujientes y refrescantes, ideales para ensaladas.",
+    "price": 6,
+    "category": "Verduras",
+    "thumbnail": "../../assets/pepino.png",
+    "images": "../../assets/pepino.png"
+  },
+  {
+    "id": 11,
+    "title": "Kiwi",
+    "description": "Kiwi jugoso y dulce, ideal para licuados y ensaladas de frutas.",
+    "price": 20,
+    "category": "Frutas",
+    "thumbnail": "../../assets/kiwi.png",
+    "images": "../../assets/kiwi.png"
+  },
+  {
+    "id": 12,
+    "title": "Zapallo calabaza",
+    "description": "Zapallo calabaza, con mucha pulpa para las mejores cocciones.",
+    "price": 5,
+    "category": "Verduras",
+    "thumbnail": "../../assets/zapalloCalabaza.png",
+    "images": "../../assets/zapalloCalabaza.png"
+  },
+{
+    "id": 13,
+    "title": "Papas",
+    "description": "Papa lavada y sepillada perfecta para ensaladas.",
+    "price": 15,
+    "category": "Verduras",
+    "thumbnail": "../../assets/papa.png",
+    "images": "../../assets/papa.png"
+  },
+    {
+    "id": 14,
+    "title": "Morron rojo",
+    "description": "Morron rojo ideal para salteados y salsas varias.",
+    "price": "5",
+    "category": "Verduras",
+    "thumbnail": "../../assets/Morron.png",
+    "images": "../../assets/Morron.png"
+  },
+    {
+    "id": 15,
+    "title": "Naranja",
+    "description": "Naranja de ombligo, ideal para jugos.",
+    "price": 5,
+    "category": "Frutas",
+    "thumbnail": "../../assets/naranja.png",
+    "images": "../../assets/naranja.png"
+  },
+    {
+    "id": 16,
+    "title": "Arbejas congeladas",
+    "description": "Las mejores arbejas para un buen guizante",
+    "price": 5,
+    "category": "Congelados",
+    "thumbnail": "../../assets/arbejas.png",
+    "images": "../../assets/arbejas.png"
+  },
+    {
+    "id": 17,
+    "title": "Curcuma",
+    "description": "El condimento perfecto para tu arroz",
+    "price": 5,
+    "category": "Especias",
+    "thumbnail": "../../assets/curcuma.png",
+    "images": "../../assets/curcuma.png"
+  },
+     {
+    "id": 18,
+    "title": "Cebolla de verdeo",
+    "description": "Cebolla de verdeo. especial para una buena salsa con crema",
+    "price": 5,
+    "category": "Verduras",
+    "thumbnail": "../../assets/cebolla verdeo.png",
+    "images": "../../assets/cebolla verdeo.png"
+  },
+     {
+    "id": 19,
+    "title": "Arandanos",
+    "description": "Arandanos ideales para tartas de frutos rojos",
+    "price": 5,
+    "category": "Frutas",
+    "thumbnail": "../../assets/arandanos.png",
+    "images": "../../assets/arandanos.png"
+  },
+    {
+    "id": 20,
+    "title": "Pera",
+    "description": "Pera de estación.",
+    "price": 5,
+    "category": "Frutas",
+    "thumbnail": "../../assets/pera.png",
+    "images": "../../assets/pera.png"
+  },
+  {
+  "id": 21,
+   "title": "Canela en Rama", 
+   "description": "Canela natural en rama, ideal para infusiones y postres.", 
+   "price": 12, 
+   "category": "Especias", 
+   "thumbnail": "../../assets/canela.png", 
+   "images": "../../assets/canela.png"
+  },
+   {
+    "id": 22, 
+   "title": "Ajo disecado",
+     "description": "Ajo disecado, ideal para sazonar carnes y guisos.", 
+     "price": 15, 
+     "category": "Especias", 
+     "thumbnail": "../../assets/ajo.png", 
+     "images":"../../assets/ajo.png"
+    },
+    {
+    "id": 23,
+     "title": "Laurel disecado", 
+     "description": "Laurel disecado, perfecto para un buen tuco.", 
+     "price": 18, 
+     "category": "Especias", 
+     "thumbnail": "../../assets/laurel.png", 
+     "images": "../../assets/laurel.png"
+    },
+    {
+    "id": 24, 
+    "title": "Pimenton rojo",
+    "description": "Pimenton rojo en polvo, excelente para guisos y platillos mexicanos.",
+    "price": 9, 
+    "category": "Especias",
+    "thumbnail": "../../assets/pimenton.png",
+    "images":"../../assets/pimenton.png"
+  },
+    {
+    "id": 25, 
+    "title": "Perejil",
+     "description": "Perejil seco, ideal para darle sabor a las milanesas, pastas y ensaladas.", 
+     "price": 7, 
+     "category": "Especias", 
+     "thumbnail": "../../assets/perejil.png", 
+     "images": "../../assets/perejil.png"
+    },
+    {
+    "id": 26,
+     "title": "Especias surtidas", 
+     "description": "La combinacion perfecta de especias surtidas para tus comidas", 
+     "price": 5, 
+     "category": "Especias", 
+     "thumbnail": "../../assets/especiasSurtidas.png",
+     "images": "../../assets/especiasSurtidas.png"
+    },
+    {
+    "id": 27, 
+    "title": "Berenjena", 
+    "description": "Berenjena,de buen tamaño para hacerlas rebozadas.", 
+    "price": 11, 
+    "category": "Verduras", 
+    "thumbnail": "../../assets/berenjena.png", 
+    "images": "../../assets/berenjena.png"
+  },
+  {
+    "id": 29,
+    "title": "Brócoli Congelado",
+    "description": "Brócoli congelado, ideal para acompañar platos principales.",
+    "price": 5,
+    "category": "Congelados",
+    "thumbnail": "../../assets/brocoli.png",
+    "images":"../../assets/brocoli.png"
+  },
+  {
+    "id": 30,
+    "title": "Sardinas",
+    "description": "Sardinas congeladas, para una dieta equilibrada",
+    "price": 4,
+    "category": "Congelados",
+    "thumbnail": "../../assets/sardinas.png",
+    "images": "../../assets/sardinas.png"
+  },
+  
+  {
+    "id": 31,
+    "title": "Choclo",
+    "description": "Choclo, ideal para preparar sopas o platos vegetarianos.",
+    "price": 5,
+    "category": "Verduras",
+    "thumbnail": "../../assets/choclo.png",
+    "images": "../../assets/choclo.png"
+  }
+]
+

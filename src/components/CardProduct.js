@@ -2,18 +2,24 @@ import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
-const Product = () => {
+const CardProduct = ({ product }) => {
+  const { thumbnail, title, price } = product;
+  const imageMap = {
+    "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
+    "../../assets/banana.png": require("../../assets/banana.png"),
+    // ... agrega el resto de las imágenes
+  };
   return (
     <Pressable style={styles.container}>
       <Image
-        source={require("../../assets/banana.png")}
+        source={imageMap[thumbnail]}
         style={styles.img}
         resizeMode="contain"
-      ></Image>
+      />
       <View style={styles.containerDetails}>
-        <Text style={styles.title}>Banana</Text>
+        <Text style={styles.title}>{title}</Text>
         <View style={styles.containerPrice}>
-          <Text style={styles.price}>$100</Text>
+          <Text style={styles.price}>$ {price}</Text>
           <Pressable style={styles.cart}>
             <FontAwesome5 name="cart-plus" size={20} color="black" />
           </Pressable>
@@ -23,22 +29,23 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default CardProduct;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "green",
+    borderColor: "black",
+    borderWidth: 2,
     borderRadius: 10,
-    padding: 10,
+    padding: 8,
     gap: 10,
-    width: "30%",
+    width: "40%",
   },
 
   img: {
-    minWidth: 80,
-    minHeight: 60,
-    maxWidth: 140,
-    maxHeight: 140,
+    minWidth: 160,
+    minHeight: 140,
+    maxWidth: 180,
+    maxHeight: 180,
     width: "20vw",
     height: "20vw",
   },
