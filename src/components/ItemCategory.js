@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import ShadowCard from "./ShadowCard";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const images = {
   1: require("../../assets/frutas.png"),
@@ -8,13 +8,17 @@ const images = {
   4: require("../../assets/especias.png"),
 };
 
-const ItemCategory = ({ item }) => {
+const ItemCategory = ({ item: category }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <ShadowCard>
-        <Image source={images[item.id]} style={styles.img} />
-      </ShadowCard>
-      <Text style={styles.text}>{item.title}</Text>
+      <Pressable
+        onPress={() => navigation.navigate("ProductsCategory", { category })}
+      >
+        <Image source={images[category.id]} style={styles.img} />
+        <Text style={styles.text}>{category.title}</Text>
+      </Pressable>
     </View>
   );
 };

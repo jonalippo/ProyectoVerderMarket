@@ -1,22 +1,29 @@
 import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { colors } from "../../global/Theme";
+import { useNavigation } from "@react-navigation/native";
 
 const CardProduct = ({ product }) => {
-  const { thumbnail, title, price } = product;
+  const { images, title, price } = product;
   const imageMap = {
     "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
     "../../assets/banana.png": require("../../assets/banana.png"),
-    // ... agrega el resto de las imágenes
+    "../../assets/lechuga.png": require("../../assets/lechuga.png"),
+    "../../assets/zanahorias.png": require("../../assets/zanahorias.png"),
   };
+  const navigation = useNavigation();
   return (
-    <Pressable style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate("ProductDetails", { product })}
+    >
       <Image
-        source={imageMap[thumbnail]}
+        source={imageMap[images]}
         style={styles.img}
         resizeMode="contain"
       />
-      <View style={styles.containerDetails}>
+      <View>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.containerPrice}>
           <Text style={styles.price}>$ {price}</Text>
@@ -33,12 +40,11 @@ export default CardProduct;
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "black",
+    borderColor: colors.primaryAccent,
     borderWidth: 2,
     borderRadius: 10,
     padding: 8,
     gap: 10,
-    width: "40%",
   },
 
   img: {
@@ -49,8 +55,6 @@ const styles = StyleSheet.create({
     width: "20vw",
     height: "20vw",
   },
-
-  containerDetails: {},
 
   title: {
     fontSize: 24,

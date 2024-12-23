@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import CardProduct from "../components/CardProduct";
 import Search from "../components/Search";
 
-export default function ProductsCategory({ category }) {
+export default function ProductsCategory({ route }) {
+  const { category } = route.params;
   const [productsFiltered, setProductsFiltered] = useState([]);
   const [keyword, setKeyword] = useState("");
 
@@ -28,9 +29,13 @@ export default function ProductsCategory({ category }) {
       <Header title={category} />
       <Search onChangeKeyword={(t) => setKeyword(t)} />
       <Text style={style.text}>Productos</Text>
+
       <FlatList
         data={productsFiltered}
         keyExtractor={(item) => item.id}
+        numColumns={2}
+        contentContainerStyle={style.flatListContent}
+        columnWrapperStyle={style.columnWrapper}
         renderItem={({ item }) => <CardProduct product={item} />}
       />
     </View>
@@ -38,19 +43,25 @@ export default function ProductsCategory({ category }) {
 }
 
 const style = StyleSheet.create({
-  container: { gap: 10 },
+  container: {
+    gap: 10,
+    flex: 1,
+  },
+
   text: {
     color: "black",
     marginTop: 10,
     fontSize: 40,
     marginLeft: 10,
   },
-  containerProducts: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "center",
+
+  flatListContent: {
     justifyContent: "center",
-    padding: 10,
-    gap: 10,
+    paddingVertical: 10,
+  },
+
+  columnWrapper: {
+    justifyContent: "space-around",
+    marginBottom: 20,
   },
 });

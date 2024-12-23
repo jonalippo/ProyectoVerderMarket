@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Principal from "./src/screens/Principal";
-import { View } from "react-native";
 import Home from "./src/screens/Home";
 import { colors } from "./global/Theme";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ProductsCategory from "./src/screens/ProductsCategory";
 import ProductDetails from "./src/screens/ProductDetails";
+import Principal from "./src/screens/Principal";
 
 export default function App() {
   const product = {
@@ -19,16 +20,21 @@ export default function App() {
     images: "../../assets/manzanaRoja.png",
   };
 
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={style.container}>
+    <>
       <StatusBar style="light" backgroundColor={colors.primary} />
-      <ProductsCategory category="Frutas" />
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="ProductsCategory" component={ProductsCategory} />
+          <Stack.Screen name="ProductDetails" component={ProductDetails} />
+          <Stack.Screen name="Principal" component={Principal} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+const style = StyleSheet.create({});
