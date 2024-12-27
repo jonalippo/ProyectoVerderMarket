@@ -13,6 +13,7 @@ const Categories = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
+        contentContainerStyle={styles.containerCard}
       />
     </View>
   );
@@ -29,5 +30,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     alignItems: "flex-start",
     paddingVertical: 10,
+  },
+  containerCard: {
+    paddingBottom: 30,
   },
 });

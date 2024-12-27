@@ -24,9 +24,7 @@ export default function ProductDetails({ route }) {
             <FontAwesome5 name="heart" size={30} color={colors.primaryAccent} />
           </Pressable>
         </View>
-
         <Text style={styles.description}>{description}</Text>
-
         <View style={styles.containerPrice}>
           <Text style={styles.price}>Precio: $ {price}</Text>
           <View style={styles.containerCount}>
@@ -47,7 +45,6 @@ export default function ProductDetails({ route }) {
             </Pressable>
           </View>
         </View>
-
         <Pressable style={styles.containerButton}>
           <Text style={styles.textButton}>Agregar al carrito</Text>
         </Pressable>

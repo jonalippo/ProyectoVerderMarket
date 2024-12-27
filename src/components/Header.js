@@ -3,7 +3,7 @@ import { colors } from "../../global/Theme";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Header({ title = "Productos" }) {
+export default function Header({ title }) {
   const navigation = useNavigation();
 
   return (

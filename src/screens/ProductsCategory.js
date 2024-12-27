@@ -29,7 +29,6 @@ export default function ProductsCategory({ route }) {
     <View style={style.container}>
       <Search onChangeKeyword={(t) => setKeyword(t)} />
       <Text style={style.text}>Productos</Text>
-
       <FlatList
         data={productsFiltered}
         keyExtractor={(item) => item.id}
