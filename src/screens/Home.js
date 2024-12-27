@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text, FlatList } from "react-native";
-import Header from "../components/Header";
 import Search from "../components/Search";
 import CardProduct from "../components/CardProduct";
 import Banner from "../components/Banner";
@@ -25,7 +24,6 @@ export default function Home({ title }) {
 
   return (
     <View style={style.container}>
-      <Header title="Home" />
       <Search onChangeKeyword={(text) => setKeyword(text)} />
       <Banner />
       <Categories />

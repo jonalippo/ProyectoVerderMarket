@@ -1,19 +1,17 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import Header from "../components/Header";
 import { colors } from "../../global/Theme";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Feather from "@expo/vector-icons/Feather";
 
 export default function ProductDetails({ route }) {
+  const { product } = route.params;
   const { images, title, description, price } = product;
   const imageMap = {
     "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
   };
-  const { product } = route.params;
 
   return (
     <View style={styles.container}>
-      <Header title={product.category} />
       <Image
         source={imageMap[images]}
         style={styles.img}

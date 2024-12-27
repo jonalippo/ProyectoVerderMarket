@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text, FlatList } from "react-native";
-import Header from "../components/Header";
 import products from "../data/products.json";
 import { useEffect, useState } from "react";
 import CardProduct from "../components/CardProduct";
@@ -12,21 +11,22 @@ export default function ProductsCategory({ route }) {
 
   useEffect(() => {
     if (keyword) {
-      return setProductsFiltered(
+      setProductsFiltered(
         products.filter(
           (product) =>
-            product.category === category && product.title.includes(keyword)
+            product.category === category.title &&
+            product.title.includes(keyword)
         )
       );
+    } else {
+      setProductsFiltered(
+        products.filter((product) => product.category === category.title)
+      );
     }
-    setProductsFiltered(
-      products.filter((product) => product.category === category)
-    );
-  }, [keyword]);
+  }, [keyword, products]);
 
   return (
     <View style={style.container}>
-      <Header title={category} />
       <Search onChangeKeyword={(t) => setKeyword(t)} />
       <Text style={style.text}>Productos</Text>
 

@@ -7,8 +7,11 @@ import {
   ImageBackground,
 } from "react-native";
 import { colors } from "../../global/Theme";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Home() {
+export default function Principal() {
+  const navigation = useNavigation();
+
   return (
     <View style={style.container}>
       <ImageBackground
@@ -21,7 +24,10 @@ export default function Home() {
           resizeMode="cover"
           source={require("../../assets/logo1.png")}
         />
-        <Pressable style={style.boton}>
+        <Pressable
+          style={style.boton}
+          onPress={() => navigation.navigate("Home", {})}
+        >
           <Text style={style.textButton}>Ingresar</Text>
         </Pressable>
       </ImageBackground>
