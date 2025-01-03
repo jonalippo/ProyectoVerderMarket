@@ -24,14 +24,16 @@ export default Categories;
 const styles = StyleSheet.create({
   container: {
     paddingLeft: 10,
-    paddingBottom: 10,
+    paddingBottom: 20,
   },
+
   title: {
     fontSize: 30,
     alignItems: "flex-start",
     paddingVertical: 10,
   },
+
   containerCard: {
-    paddingBottom: 30,
+    paddingTop: 10,
   },
 });

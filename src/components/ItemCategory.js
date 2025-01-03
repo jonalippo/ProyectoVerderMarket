@@ -32,11 +32,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "start",
   },
+
   img: {
     width: 65,
     height: 65,
     borderRadius: 30,
   },
+
   text: {
     fontWeight: "bold",
     color: "black",

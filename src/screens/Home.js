@@ -33,7 +33,6 @@ export default function Home({ title }) {
         keyExtractor={(item) => item.id}
         numColumns={2}
         contentContainerStyle={style.flatListContent}
-        columnWrapperStyle={style.columnWrapper}
         renderItem={({ item }) => (
           <View style={style.cardContainer}>
             <CardProduct product={item} />
@@ -50,16 +49,13 @@ const style = StyleSheet.create({
   title: {
     fontSize: 30,
     alignItems: "flex-start",
-    paddingVertical: 10,
     marginLeft: 10,
   },
 
   flatListContent: {
     justifyContent: "center",
-  },
-
-  columnWrapper: {
-    justifyContent: "space-evenly",
+    alignItems: "center",
+    paddingBottom: 50,
   },
 
   cardContainer: {

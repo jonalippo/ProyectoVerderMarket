@@ -1,0 +1,32 @@
+{
+    "total":1000,
+    "products":[
+         {
+    "id": 1,
+    "title": "Manzanas",
+    "description": "Manzanas jugosas y crujientes, perfectas para comer como snackf.",
+    "price": 10,
+    "category": "Frutas",
+    "thumbnail": "../../assets/manzanaRoja.png",
+    "images": "../../assets/manzanaRoja.png"
+  },
+  {
+    "id": 2,
+    "title": "Bananas",
+    "description": "Bananas dulces y orgánicas, ideales para batidos y snacks.",
+    "price": 8,
+    "category": "Frutas",
+    "thumbnail": "../../assets/banana.png",
+    "images": "../../assets/banana.png"
+  },
+  {
+    "id": 3,
+    "title": "Zanahorias",
+    "description": "Zanahorias crujientes y frescas, perfectas para ensaladas y sopas.",
+    "price": 6,
+    "category": "Verduras",
+    "thumbnail": "../../assets/zanahorias.png",
+    "images": "../../assets/zanahorias.png"
+  }
+    ]
+}

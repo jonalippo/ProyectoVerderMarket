@@ -43,8 +43,6 @@ const styles = StyleSheet.create({
     borderColor: colors.primaryAccent,
     borderWidth: 2,
     borderRadius: 10,
-    padding: 8,
-    gap: 10,
   },
 
   img: {
