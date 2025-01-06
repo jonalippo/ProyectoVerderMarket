@@ -59,6 +59,8 @@ const style = StyleSheet.create({
   },
 
   cardContainer: {
-    transform: [{ scale: 0.7 }],
+    transform: [{ scale: 0.9 }],
+    marginHorizontal: 5,
+    marginVertical: 5,
   },
 });

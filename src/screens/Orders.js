@@ -1,9 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
+import orders from "../data/orders.json";
+import CardOrder from "../components/CardOrder";
 
 const Orders = () => {
   return (
     <View>
-      <Text>Orders</Text>
+      <FlatList
+        data={orders}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <CardOrder order={item} />}
+      />
     </View>
   );
 };

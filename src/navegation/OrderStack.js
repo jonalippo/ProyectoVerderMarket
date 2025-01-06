@@ -9,7 +9,7 @@ const OrderStack = () => {
     <Stack.Navigator
       screenOptions={({ route }) => ({
         header: () => {
-          return <Header title="Ordenes" routeName={route.name} />;
+          return <Header title="Ordenes" />;
         },
       })}
     >

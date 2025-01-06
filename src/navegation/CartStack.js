@@ -9,7 +9,7 @@ const CartStack = () => {
     <Stack.Navigator
       screenOptions={({ route }) => ({
         header: () => {
-          return <Header title="Carrito" routeName={route.name} />;
+          return <Header title="Carrito" />;
         },
       })}
     >

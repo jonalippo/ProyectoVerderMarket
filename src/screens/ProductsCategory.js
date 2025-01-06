@@ -57,6 +57,7 @@ const style = StyleSheet.create({
   flatListContent: {
     justifyContent: "center",
     paddingVertical: 10,
+    paddingBottom: 100,
   },
 
   columnWrapper: {

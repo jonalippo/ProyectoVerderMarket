@@ -45,10 +45,10 @@ export default function ProductDetails({ route }) {
             </Pressable>
           </View>
         </View>
-        <Pressable style={styles.containerButton}>
-          <Text style={styles.textButton}>Agregar al carrito</Text>
-        </Pressable>
       </View>
+      <Pressable style={styles.containerButton}>
+        <Text style={styles.textButton}>Agregar al carrito</Text>
+      </Pressable>
     </View>
   );
 }
@@ -56,6 +56,9 @@ export default function ProductDetails({ route }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primary,
+    flex: 1,
+    position: "relative",
+    alignItems: "center",
   },
 
   img: {
@@ -69,6 +72,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 80,
     overflow: "hidden",
     alignItems: "center",
+    height: "100%",
   },
 
   titleHeart: {
@@ -125,7 +129,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "50%",
     borderRadius: 20,
-    marginTop: 40,
+    position: "absolute",
+    bottom: 70,
   },
 
   textButton: {
