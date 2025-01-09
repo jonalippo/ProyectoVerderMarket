@@ -9,30 +9,34 @@ import {
 } from "../features/conunterSlice";
 import Feather from "@expo/vector-icons/Feather";
 
-const Counter = () => {
+const Counter = ({ productId }) => {
   const [inputAmount, setInputAmount] = useState(0);
-  const counter = useSelector((state) => state.counter.value);
-  const dispach = useDispatch;
+  const counter = useSelector((state) => state.counter[productId]?.value ?? 0);
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.containerCount}>
-      <Pressable onPress={() => dispach(decrement())}>
+      <Pressable onPress={() => dispatch(decrement(productId))}>
         <Feather name="minus-square" size={30} color={colors.primaryAccent} />
       </Pressable>
 
       <Text style={styles.textCount}>{counter}</Text>
 
-      <Pressable onPress={() => dispach(increment())}>
+      <Pressable onPress={() => dispatch(increment(productId))}>
         <Feather name="plus-square" size={30} color={colors.primaryAccent} />
       </Pressable>
 
-      <TextInput
+      {/* <TextInput
         value={inputAmount}
         onChangeText={(t) => setInputAmount(parseInt(t))}
       />
-      <Pressable onPress={() => dispach(incrementByAmount(inputAmount))}>
+      <Pressable
+        onPress={() =>
+          dispatch(incrementByAmount({ id: productId, amount: inputAmount }))
+        }
+      >
         <Text>Cambiar</Text>
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 };

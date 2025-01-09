@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { colors } from "../../global/Theme";
 import React from "react";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Feather from "@expo/vector-icons/Feather";
 import Counter from "./Counter";
+import { colors } from "../../global/Theme";
 
 export default function CardCartProduct({ product }) {
-  const { images, title, description, price } = product;
+  const { id, images, title, description, price } = product;
   const imageMap = {
     "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
     "../../assets/banana.png": require("../../assets/banana.png"),
@@ -24,24 +24,7 @@ export default function CardCartProduct({ product }) {
         <View style={styles.containerText}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.description}>{description}</Text>
-          <Counter />
-          {/* <View style={styles.containerCount}>
-            <Pressable>
-              <Feather
-                name="minus-square"
-                size={30}
-                color={colors.primaryAccent}
-              />
-            </Pressable>
-            <Text style={styles.textCount}>2</Text>
-            <Pressable>
-              <Feather
-                name="plus-square"
-                size={30}
-                color={colors.primaryAccent}
-              />
-            </Pressable>
-          </View> */}
+          <Counter productId={id} />
         </View>
 
         <View style={styles.containerPrice}>
