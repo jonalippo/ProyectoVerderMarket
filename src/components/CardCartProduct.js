@@ -3,6 +3,7 @@ import { colors } from "../../global/Theme";
 import React from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Feather from "@expo/vector-icons/Feather";
+import Counter from "./Counter";
 
 export default function CardCartProduct({ product }) {
   const { images, title, description, price } = product;
@@ -23,7 +24,8 @@ export default function CardCartProduct({ product }) {
         <View style={styles.containerText}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.description}>{description}</Text>
-          <View style={styles.containerCount}>
+          <Counter />
+          {/* <View style={styles.containerCount}>
             <Pressable>
               <Feather
                 name="minus-square"
@@ -39,7 +41,7 @@ export default function CardCartProduct({ product }) {
                 color={colors.primaryAccent}
               />
             </Pressable>
-          </View>
+          </View> */}
         </View>
 
         <View style={styles.containerPrice}>
@@ -90,6 +92,7 @@ const styles = StyleSheet.create({
     alignItems: "left",
     gap: 10,
     textAlign: "left",
+    marginLeft: 5,
   },
 
   title: {
