@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 30,
-    margin: 20,
+    marginHorizontal: 20,
     overflow: "hidden",
   },
 

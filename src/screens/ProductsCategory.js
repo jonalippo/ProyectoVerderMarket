@@ -1,8 +1,8 @@
 import { StyleSheet, View, Text, FlatList } from "react-native";
-import products from "../data/products.json";
 import { useEffect, useState } from "react";
 import CardProduct from "../components/CardProduct";
 import Search from "../components/Search";
+import products from "../data/products.json";
 
 export default function ProductsCategory({ route }) {
   const { category } = route.params;

@@ -1,8 +1,11 @@
 import { StyleSheet, FlatList, View, Text } from "react-native";
-import categories from "../data/categories.json";
 import ItemCategory from "./ItemCategory";
+import { useSelector } from "react-redux";
+import { useGetCategoriesQuery } from "../services/shop";
 
 const Categories = () => {
+  const { data: categories } = useGetCategoriesQuery();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Categorias</Text>
@@ -24,7 +27,7 @@ export default Categories;
 const styles = StyleSheet.create({
   container: {
     paddingLeft: 10,
-    paddingBottom: 20,
+    paddingBottom: 15,
   },
 
   title: {
@@ -34,6 +37,6 @@ const styles = StyleSheet.create({
   },
 
   containerCard: {
-    paddingTop: 10,
+    paddingTop: 5,
   },
 });
