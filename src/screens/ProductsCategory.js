@@ -2,46 +2,55 @@ import { StyleSheet, View, Text, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import CardProduct from "../components/CardProduct";
 import Search from "../components/Search";
-import products from "../data/products.json";
+import { useGetProductsQuery } from "../services/shop";
+import { colors } from "../../global/Theme";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function ProductsCategory({ route }) {
   const { category } = route.params;
-  const [productsFiltered, setProductsFiltered] = useState([]);
+  const { data, isSuccess, isLoading } = useGetProductsQuery(category);
   const [keyword, setKeyword] = useState("");
+  const [productsFiltered, setProductsFiltered] = useState([]);
 
   useEffect(() => {
-    if (keyword) {
+    if (isSuccess) {
+      setProductsFiltered(Object.values(data));
+    }
+  }, [isSuccess, data]);
+
+  useEffect(() => {
+    if (isSuccess) {
       setProductsFiltered(
-        products.filter(
-          (product) =>
-            product.category === category.title &&
-            product.title.includes(keyword)
-        )
-      );
-    } else {
-      setProductsFiltered(
-        products.filter((product) => product.category === category.title)
+        Object.values(data).filter((product) => product.title.includes(keyword))
       );
     }
-  }, [keyword, products]);
+  }, [keyword, isSuccess]);
+
+  if (isLoading)
+    return (
+      <View style={styles.containerLoading}>
+        <FontAwesome name="spinner" size={50} color="black" />
+        <Text style={styles.textLoading}>Cargando</Text>
+      </View>
+    ); //msj cargando
 
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Search onChangeKeyword={(t) => setKeyword(t)} />
-      <Text style={style.text}>Productos</Text>
+      <Text style={styles.text}>Productos</Text>
       <FlatList
         data={productsFiltered}
         keyExtractor={(item) => item.id}
         numColumns={2}
-        contentContainerStyle={style.flatListContent}
-        columnWrapperStyle={style.columnWrapper}
+        contentContainerStyle={styles.flatListContent}
+        columnWrapperStyle={styles.columnWrapper}
         renderItem={({ item }) => <CardProduct product={item} />}
       />
     </View>
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     gap: 10,
     flex: 1,
@@ -63,5 +72,21 @@ const style = StyleSheet.create({
   columnWrapper: {
     justifyContent: "space-around",
     marginBottom: 20,
+  },
+
+  containerLoading: {
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 25,
+    marginTop: 20,
+  },
+
+  textLoading: {
+    fontSize: 30,
+    textAlign: "center",
+    fontWeight: "bold",
+    color: colors.primaryAccent,
   },
 });

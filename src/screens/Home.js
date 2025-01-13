@@ -3,24 +3,28 @@ import Search from "../components/Search";
 import CardProduct from "../components/CardProduct";
 import Banner from "../components/Banner";
 import Categories from "../components/Categories";
-import products from "../data/products.json";
 import { useEffect, useState } from "react";
+import { useGetProductsQuery } from "../services/shop";
 
-export default function Home({ title }) {
-  const [productsFiltered, setProductsFiltered] = useState([]);
+export default function Home({ route }) {
+  const { category } = route.params;
+  const { data, isSuccess } = useGetProductsQuery(category);
   const [keyword, setKeyword] = useState("");
+  const [productsFiltered, setProductsFiltered] = useState([]);
 
   useEffect(() => {
-    const filteredProducts = products
-      .filter(
-        (product) =>
-          (!title || product.title === title) &&
-          (!keyword ||
-            product.title.toLowerCase().includes(keyword.toLowerCase()))
-      )
-      .slice(0, 4);
-    setProductsFiltered(filteredProducts);
-  }, [keyword, title]);
+    if (isSuccess) {
+      setProductsFiltered(Object.values(data));
+    }
+  }, [isSuccess, data]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setProductsFiltered(
+        Object.values(data).filter((product) => product.title.includes(keyword))
+      );
+    }
+  }, [keyword, isSuccess]);
 
   return (
     <View style={style.container}>

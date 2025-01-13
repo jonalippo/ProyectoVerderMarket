@@ -1,10 +1,31 @@
 import { StyleSheet, FlatList, View, Text } from "react-native";
 import ItemCategory from "./ItemCategory";
-import { useSelector } from "react-redux";
 import { useGetCategoriesQuery } from "../services/shop";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { colors } from "../../global/Theme";
 
 const Categories = () => {
-  const { data: categories } = useGetCategoriesQuery();
+  const {
+    data: categories,
+    isError,
+    error,
+    isLoading,
+  } = useGetCategoriesQuery();
+
+  if (isLoading)
+    return (
+      <View style={styles.containerLoading}>
+        <FontAwesome name="spinner" size={50} color="black" />
+        <Text style={styles.textLoading}>Cargando</Text>
+      </View>
+    ); //msj cargando
+
+  if (isError)
+    return (
+      <View>
+        <Text>{error.message}</Text>
+      </View>
+    ); //msj de error, sin estilos
 
   return (
     <View style={styles.container}>
@@ -38,5 +59,21 @@ const styles = StyleSheet.create({
 
   containerCard: {
     paddingTop: 5,
+  },
+
+  containerLoading: {
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 25,
+    marginTop: 20,
+  },
+
+  textLoading: {
+    fontSize: 30,
+    textAlign: "center",
+    fontWeight: "bold",
+    color: colors.primaryAccent,
   },
 });
