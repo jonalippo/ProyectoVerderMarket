@@ -3,28 +3,24 @@ import Search from "../components/Search";
 import CardProduct from "../components/CardProduct";
 import Banner from "../components/Banner";
 import Categories from "../components/Categories";
-import { useEffect, useState } from "react";
-import { useGetProductsQuery } from "../services/shop";
+import { useState, useEffect } from "react";
+import { useGetAllProductsQuery } from "../services/shop";
 
-export default function Home({ route }) {
-  const { category } = route.params;
-  const { data, isSuccess } = useGetProductsQuery(category);
+export default function Home() {
+  const { data } = useGetAllProductsQuery();
   const [keyword, setKeyword] = useState("");
-  const [productsFiltered, setProductsFiltered] = useState([]);
+  const [randomProducts, setRandomProducts] = useState([]);
+
+  const getRandomProducts = (products) => {
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 4);
+  };
 
   useEffect(() => {
-    if (isSuccess) {
-      setProductsFiltered(Object.values(data));
+    if (data) {
+      setRandomProducts(getRandomProducts(data));
     }
-  }, [isSuccess, data]);
-
-  useEffect(() => {
-    if (isSuccess) {
-      setProductsFiltered(
-        Object.values(data).filter((product) => product.title.includes(keyword))
-      );
-    }
-  }, [keyword, isSuccess]);
+  }, [data]);
 
   return (
     <View style={style.container}>
@@ -33,7 +29,7 @@ export default function Home({ route }) {
       <Categories />
       <Text style={style.title}>Productos</Text>
       <FlatList
-        data={productsFiltered}
+        data={randomProducts}
         keyExtractor={(item) => item.id}
         numColumns={2}
         contentContainerStyle={style.flatListContent}
