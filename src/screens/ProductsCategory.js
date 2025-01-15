@@ -8,13 +8,15 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function ProductsCategory({ route }) {
   const { category } = route.params;
-  const { data, isSuccess, isLoading } = useGetProductsQuery(category.title);
+  const { data, isSuccess, isError, error, isLoading } = useGetProductsQuery(
+    category.title
+  );
   const [keyword, setKeyword] = useState("");
   const [productsFiltered, setProductsFiltered] = useState([]);
 
   useEffect(() => {
     if (isSuccess) {
-      setProductsFiltered(data);
+      setProductsFiltered(Object.values(data));
     }
   }, [isSuccess, data]);
 
@@ -25,6 +27,13 @@ export default function ProductsCategory({ route }) {
       );
     }
   }, [keyword, isSuccess]);
+
+  if (isError)
+    return (
+      <View>
+        <Text>{error.message}</Text>
+      </View>
+    );
 
   if (isLoading)
     return (

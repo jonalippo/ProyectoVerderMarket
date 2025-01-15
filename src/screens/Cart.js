@@ -2,8 +2,13 @@ import { StyleSheet, FlatList, View, Pressable, Text } from "react-native";
 import cart from "../data/cart.json";
 import { colors } from "../../global/Theme";
 import CardCartProduct from "../components/CardCartProduct";
+import { usePostOrdersMutation } from "../services/orders";
 
 const Cart = () => {
+  const [triggerPost] = usePostOrdersMutation();
+  const confirmCart = () => {
+    triggerPost({ id: "2", products: [{ id: "2" }], total: 120 });
+  };
   return (
     <View style={styles.container}>
       <FlatList
@@ -13,7 +18,7 @@ const Cart = () => {
         renderItem={({ item }) => <CardCartProduct product={item} />}
       />
 
-      <Pressable style={styles.containerButton}>
+      <Pressable style={styles.containerButton} onPress={confirmCart}>
         <Text style={styles.textButton}>Verificar</Text>
       </Pressable>
     </View>
