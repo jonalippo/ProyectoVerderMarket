@@ -1,14 +1,50 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Image, View, Text } from "react-native";
+import SubmitButton from "../components/SubmitButton";
+import { useNavigation } from "@react-navigation/native";
+import { useGetUserQuery } from "../services/user";
+import { useSelector } from "react-redux";
+import Loading from "../components/Loading";
 
-const Perfil = () => {
+const Profile = () => {
+  const navigation = useNavigation();
+  const localId = useSelector((state) => state.user.localId);
+  const { data: user, isLoading } = useGetUserQuery({ localId });
+
+  if (isLoading) return <Loading />;
+
   return (
-    <View>
-      <Text>Perfil</Text>
+    <View style={styles.container}>
+      <Image
+        source={
+          user?.image
+            ? { uri: user.image }
+            : require("../../assets/userDefault.png")
+        }
+        resizeMode="cover"
+        style={styles.image}
+      />
+
+      <SubmitButton
+        title="Agregar imagen de perfil"
+        onPress={() => navigation.navigate("ImageSelector")}
+      />
+      <SubmitButton title="Agregar localizacion" onPress={() => {}} />
     </View>
   );
 };
 
-export default Perfil;
+export default Profile;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 70,
+    alignItems: "center",
+    gap: 20,
+  },
+
+  image: {
+    width: 180,
+    height: 180,
+    borderRadius: 100,
+  },
+});

@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import CardProduct from "../components/CardProduct";
 import Search from "../components/Search";
 import { useGetProductsQuery } from "../services/shop";
-import { colors } from "../../global/Theme";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Loading from "../components/Loading";
 
 export default function ProductsCategory({ route }) {
   const { category } = route.params;
@@ -35,13 +34,7 @@ export default function ProductsCategory({ route }) {
       </View>
     );
 
-  if (isLoading)
-    return (
-      <View style={styles.containerLoading}>
-        <FontAwesome name="spinner" size={50} color="black" />
-        <Text style={styles.textLoading}>Cargando</Text>
-      </View>
-    ); //msj cargando
+  if (isLoading) return <Loading />; //msj cargando
 
   return (
     <View style={styles.container}>
@@ -81,21 +74,5 @@ const styles = StyleSheet.create({
   columnWrapper: {
     justifyContent: "space-around",
     marginBottom: 20,
-  },
-
-  containerLoading: {
-    flexDirection: "column",
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 25,
-    marginTop: 20,
-  },
-
-  textLoading: {
-    fontSize: 30,
-    textAlign: "center",
-    fontWeight: "bold",
-    color: colors.primaryAccent,
   },
 });
