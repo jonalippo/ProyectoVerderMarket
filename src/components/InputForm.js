@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  error: {
+  textError: {
     fontSize: 16,
     color: "red",
     marginLeft: 20,

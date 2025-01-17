@@ -4,15 +4,17 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { colors } from "../../global/Theme";
 import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
+import { useSelector } from "react-redux";
 
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
-  const isAuth = false; // provisorio
+  const idToken = useSelector((state) => state.user.idToken);
+
   return (
     <NavigationContainer>
       {/* <TabNavigator /> */}
-      {isAuth ? <TabNavigator /> : <AuthStack />}
+      {idToken ? <TabNavigator /> : <AuthStack />}
     </NavigationContainer>
   );
 };

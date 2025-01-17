@@ -4,6 +4,10 @@ import { colors } from "../../global/Theme";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
 import { useNavigation } from "@react-navigation/native";
+import { useSignUpMutation } from "../services/auth";
+import { useDispatch } from "react-redux";
+import { setUser } from "../features/userSlice";
+import { signupSchema } from "../validations/signupSchema";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -13,8 +17,38 @@ const Signup = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const navigation = useNavigation();
+  const [triggerSignUp] = useSignUpMutation();
+  const dispatch = useDispatch();
 
-  const onSubmit = async () => {};
+  const onSubmit = async () => {
+    try {
+      signupSchema.validateSync({ email, password, confirmPassword });
+      const response = await triggerSignUp({ email, password });
+      const user = {
+        email: response.data.email,
+        idToken: response.data.idToken,
+      };
+      dispatch(setUser(user));
+    } catch (error) {
+      switch (error.path) {
+        case "email":
+          setEmailError(error.message);
+          setPasswordError("");
+          setConfirmPasswordError("");
+          break;
+        case "password":
+          setPasswordError(error.message);
+          setEmailError("");
+          setConfirmPasswordError("");
+          break;
+        case "confirmPassword":
+          setConfirmPasswordError(error.message);
+          setEmailError("");
+          setPasswordError("");
+          break;
+      }
+    }
+  };
 
   return (
     <View style={styles.loginContainer}>
@@ -37,7 +71,7 @@ const Signup = () => {
           value={password}
           onChangeText={(t) => setPassword(t)}
           isSecure={true}
-          error={emailError}
+          error={passwordError}
         />
 
         <InputForm

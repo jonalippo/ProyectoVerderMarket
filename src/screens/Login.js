@@ -4,6 +4,10 @@ import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
 import { colors } from "../../global/Theme";
 import { useNavigation } from "@react-navigation/native";
+import { useLoginMutation } from "../services/auth";
+import { useDispatch } from "react-redux";
+import { setUser } from "../features/userSlice";
+import { loginSchema } from "../validations/loginSchema";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,8 +15,32 @@ const Login = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigation = useNavigation();
+  const [triggerLogin] = useLoginMutation();
+  const dispatch = useDispatch();
 
-  const onSubmit = async () => {};
+  const onSubmit = async () => {
+    try {
+      loginSchema.validateSync({ email, password });
+      const response = await triggerLogin({ email, password });
+
+      const user = {
+        email: response.data.email,
+        idToken: response.data.idToken,
+      };
+      dispatch(setUser(user));
+    } catch (error) {
+      switch (error.path) {
+        case "email":
+          setEmailError(error.message);
+          setPasswordError("");
+          break;
+        case "password":
+          setPasswordError(error.message);
+          setEmailError("");
+          break;
+      }
+    }
+  };
 
   return (
     <View style={styles.loginContainer}>
@@ -37,11 +65,11 @@ const Login = () => {
           value={password}
           onChangeText={(t) => setPassword(t)}
           isSecure={true}
-          error={emailError}
+          error={passwordError}
         />
 
         <SubmitButton onPress={onSubmit} title="Ingresar" />
-        <Text style={styles.submit}>Registrar nueva cuenta</Text>
+        <Text style={styles.submit}>Registrar una nueva cuenta</Text>
         <Pressable
           style={styles.buttonSubmit}
           onPress={() => navigation.navigate("Signup")}
