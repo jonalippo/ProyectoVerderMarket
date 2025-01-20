@@ -2,6 +2,9 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { colors } from "../../global/Theme";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Feather from "@expo/vector-icons/Feather";
+import { usePostCartMutation } from "../services/cart";
+import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ProductDetails({ route }) {
   const { product } = route.params;
@@ -9,7 +12,18 @@ export default function ProductDetails({ route }) {
   const imageMap = {
     "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
   };
+  const navigation = useNavigation();
+  const localId = useSelector((state) => state.user.localId);
+  const [triggerAddProduct] = usePostCartMutation();
 
+  const handleAddProduct = async () => {
+    const cartProduct = {
+      ...product,
+      quantity: 1,
+    };
+    const result = await triggerAddProduct({ localId, cartProduct });
+    navigation.navigate("CartStack");
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -46,7 +60,7 @@ export default function ProductDetails({ route }) {
           </View>
         </View>
       </View>
-      <Pressable style={styles.containerButton}>
+      <Pressable style={styles.containerButton} onPress={handleAddProduct}>
         <Text style={styles.textButton}>Agregar al carrito</Text>
       </Pressable>
     </View>
@@ -80,8 +94,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     height: 50,
-    marginTop: 10,
-    gap: 100,
+    marginTop: 15,
+    gap: 60,
   },
 
   title: {

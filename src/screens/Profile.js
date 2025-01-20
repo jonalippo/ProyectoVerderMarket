@@ -28,7 +28,15 @@ const Profile = () => {
         title="Agregar imagen de perfil"
         onPress={() => navigation.navigate("ImageSelector")}
       />
-      <SubmitButton title="Agregar localizacion" onPress={() => {}} />
+      <SubmitButton
+        title="Agregar localizacion"
+        onPress={() => {
+          navigation.navigate("LocationSelector");
+        }}
+      />
+      <View>
+        <Text style={styles.textAddress}>{user.address}</Text>
+      </View>
     </View>
   );
 };
@@ -46,5 +54,11 @@ const styles = StyleSheet.create({
     width: 180,
     height: 180,
     borderRadius: 100,
+  },
+
+  textAddress: {
+    fontSize: 18,
+    marginTop: 20,
+    fontWeight: "bold",
   },
 });

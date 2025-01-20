@@ -32,7 +32,7 @@ const ImageSelector = () => {
   };
   const confirmImage = () => {
     triggerAddImageProfile({ localId, image });
-    navigation.navigate("ProfileStack");
+    navigation.navigate("Perfil");
   };
 
   return (
