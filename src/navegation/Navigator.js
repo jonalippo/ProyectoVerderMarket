@@ -5,11 +5,20 @@ import { colors } from "../../global/Theme";
 import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fecthSession } from "../config/dbSqLite";
 
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
   const idToken = useSelector((state) => state.user.idToken);
+
+  useEffect(() => {
+    (async () => {
+      const sessionUser = await fecthSession();
+      console.log(sessionUser);
+    })();
+  }, []);
 
   return (
     <NavigationContainer>
