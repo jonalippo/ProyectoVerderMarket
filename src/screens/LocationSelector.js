@@ -64,8 +64,9 @@ const LocationSelector = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.addressText}>Dirección: {address}</Text>
       <MapPreview location={location} />
+      <Text style={styles.addressTitle}>Tu dirección es:</Text>
+      <Text style={styles.addressText}>{address}</Text>
       <SubmitButton
         title="Confirmar ubicación"
         onPress={handleConfirmLocation}
@@ -78,14 +79,19 @@ export default LocationSelector;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
+    marginTop: 80,
     alignItems: "center",
     gap: 20,
   },
-  addressText: {
-    fontSize: 16,
+
+  addressTitle: {
+    fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 10, // Espacio entre el texto y el mapa
+  },
+
+  addressText: {
+    fontSize: 18,
+    textAlign: "center",
   },
 });

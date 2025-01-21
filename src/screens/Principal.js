@@ -11,6 +11,9 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function Principal() {
   const navigation = useNavigation();
+  const ingresar = () => {
+    navigation.navigate("ShopStack");
+  };
 
   return (
     <View style={style.container}>
@@ -26,9 +29,11 @@ export default function Principal() {
         />
         <Pressable
           style={style.boton}
-          onPress={() => navigation.navigate("Home", {})}
+          onPress={() => navigation.navigate("Login", {})}
         >
-          <Text style={style.textButton}>Ingresar</Text>
+          <Text style={style.textButton} onPress={ingresar}>
+            Ingresar
+          </Text>
         </Pressable>
       </ImageBackground>
     </View>
@@ -50,16 +55,16 @@ const style = StyleSheet.create({
   },
   boton: {
     backgroundColor: colors.primary,
-    paddingVertical: 15,
+    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
-    width: "50%",
-    borderRadius: 20,
+    width: "60%",
+    borderRadius: 70,
     marginTop: 40,
   },
   textButton: {
     color: "white",
-    fontSize: 25,
+    fontSize: 22,
     textAlign: "center",
     fontWeight: "bold",
   },

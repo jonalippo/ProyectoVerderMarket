@@ -6,23 +6,14 @@ import { useNavigation } from "@react-navigation/native";
 
 const CardProduct = ({ product }) => {
   const { images, title, price } = product;
-  const imageMap = {
-    "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
-    "../../assets/banana.png": require("../../assets/banana.png"),
-    "../../assets/lechuga.png": require("../../assets/lechuga.png"),
-    "../../assets/zanahorias.png": require("../../assets/zanahorias.png"),
-  };
   const navigation = useNavigation();
+
   return (
     <Pressable
       style={styles.container}
       onPress={() => navigation.navigate("ProductDetails", { product })}
     >
-      <Image
-        source={imageMap[images]}
-        style={styles.img}
-        resizeMode="contain"
-      />
+      <Image source={{ uri: images }} style={styles.img} resizeMode="contain" />
       <View>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.containerPrice}>

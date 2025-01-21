@@ -8,10 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function ProductDetails({ route }) {
   const { product } = route.params;
-  const { images, title, description, price } = product;
-  const imageMap = {
-    "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
-  };
   const navigation = useNavigation();
   const localId = useSelector((state) => state.user.localId);
   const [triggerAddProduct] = usePostCartMutation();
@@ -24,23 +20,26 @@ export default function ProductDetails({ route }) {
     const result = await triggerAddProduct({ localId, cartProduct });
     navigation.navigate("CartStack");
   };
+
+  console.log(product.images);
   return (
     <View style={styles.container}>
       <Image
-        source={imageMap[images]}
+        source={{ uri: product.images }}
         style={styles.img}
         resizeMode="contain"
+        onError={() => console.log("Error al cargar la imagen")}
       />
       <View style={styles.containerDetails}>
         <View style={styles.titleHeart}>
-          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.title}>{product.title}</Text>
           <Pressable>
             <FontAwesome5 name="heart" size={30} color={colors.primaryAccent} />
           </Pressable>
         </View>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description}>{product.description}</Text>
         <View style={styles.containerPrice}>
-          <Text style={styles.price}>Precio: $ {price}</Text>
+          <Text style={styles.price}>Precio: $ {product.price}</Text>
           <View style={styles.containerCount}>
             <Pressable>
               <Feather
@@ -138,10 +137,10 @@ const styles = StyleSheet.create({
 
   containerButton: {
     backgroundColor: colors.primary,
-    paddingVertical: 15,
+    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
-    width: "50%",
+    width: "60%",
     borderRadius: 20,
     position: "absolute",
     bottom: 70,
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
 
   textButton: {
     color: "white",
-    fontSize: 25,
+    fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
   },

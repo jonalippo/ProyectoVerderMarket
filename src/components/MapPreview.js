@@ -1,5 +1,6 @@
 import { StyleSheet, Image, View } from "react-native";
 import { googleApi } from "../config/googleApi";
+import { colors } from "../../global/Theme";
 
 const MapPreview = ({ location }) => {
   const mapStaticUrl = `https://maps.googleapis.com/maps/api/staticmap?
@@ -28,8 +29,10 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 400,
+    width: 380,
     height: 300,
     backgroundColor: "grey",
+    borderWidth: 2,
+    borderColor: colors.primaryAccent,
   },
 });

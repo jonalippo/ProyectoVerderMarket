@@ -94,16 +94,16 @@ const styles = StyleSheet.create({
 
   containerButton: {
     backgroundColor: colors.primary,
-    paddingVertical: 15,
+    paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
     width: "40%",
-    borderRadius: 20,
+    borderRadius: 70,
   },
 
   textButton: {
     color: "white",
-    fontSize: 25,
+    fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
   },

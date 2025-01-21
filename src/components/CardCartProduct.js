@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Counter from "./Counter";
@@ -6,17 +5,12 @@ import { colors } from "../../global/Theme";
 
 export default function CardCartProduct({ product }) {
   const { id, images, title, description, price } = product;
-  const imageMap = {
-    "../../assets/manzanaRoja.png": require("../../assets/manzanaRoja.png"),
-    "../../assets/banana.png": require("../../assets/banana.png"),
-    "../../assets/zanahorias.png": require("../../assets/zanahorias.png"),
-  };
 
   return (
     <View style={styles.container}>
       <View style={styles.containerProducts}>
         <Image
-          source={imageMap[images]}
+          source={{ uri: images }}
           style={styles.img}
           resizeMode="contain"
         />

@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 30,
+    fontWeight: "bold",
     alignItems: "flex-start",
     paddingVertical: 10,
   },

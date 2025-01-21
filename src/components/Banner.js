@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginHorizontal: 20,
     overflow: "hidden",
+    marginVertical: 20,
   },
 
   img: {

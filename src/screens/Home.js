@@ -18,16 +18,23 @@ export default function Home() {
 
   useEffect(() => {
     if (data) {
-      setRandomProducts(getRandomProducts(data));
+      if (!keyword) {
+        setRandomProducts(getRandomProducts(data));
+      } else {
+        const filtered = data.filter((product) =>
+          product.title.toLowerCase().includes(keyword.toLowerCase())
+        );
+        setRandomProducts(filtered);
+      }
     }
-  }, [data]);
+  }, [data, keyword]);
 
   return (
     <View style={style.container}>
-      <Search onChangeKeyword={(text) => setKeyword(text)} />
       <Banner />
       <Categories />
       <Text style={style.title}>Productos</Text>
+      <Search onChangeKeyword={(text) => setKeyword(text)} />
       <FlatList
         data={randomProducts}
         keyExtractor={(item) => item.id}
@@ -48,6 +55,7 @@ const style = StyleSheet.create({
 
   title: {
     fontSize: 30,
+    fontWeight: "bold",
     alignItems: "flex-start",
     marginLeft: 10,
   },
