@@ -35,7 +35,7 @@ const Profile = () => {
         }}
       />
       <View>
-        <Text style={styles.textAddress}>{user.address}</Text>
+        <Text style={styles.textAddress}>{user?.address}</Text>
       </View>
     </View>
   );

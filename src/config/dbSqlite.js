@@ -4,13 +4,9 @@ import * as SQLite from "expo-sqlite";
 export const init = async () => {
   try {
     const db = await SQLite.openDatabaseAsync("session.db");
-
     const createTable = await db.execAsync(`
-
             PRAGMA journal_mode = WAL;
-
-            CREATE TABLE IF NOT EXISTS sessionUser (localId TEXT PRIMARY NOT NULL, email TEXT NOT NULL, idToken TEXT NOT NULL)
-
+            CREATE TABLE IF NOT EXISTS sessionUser (localId TEXT PRIMARY KEY NOT NULL, email TEXT NOT NULL, idToken TEXT NOT NULL);
           `);
 
     return createTable;
@@ -24,8 +20,7 @@ export const insertSession = async (localId, email, idtoken) => {
   try {
     const db = await SQLite.openDatabaseAsync("session.db");
     const newSession = await db.runAsync(
-      `
-          INSERT INTO sessionUser (localId,email,idtoken) VALUES (?,?,?)`,
+      `INSERT INTO sessionUser (localId, email,idToken) VALUES (?,?,?)`,
       [localId, email, idtoken]
     );
     return newSession;
@@ -35,7 +30,7 @@ export const insertSession = async (localId, email, idtoken) => {
 };
 
 //funcion para traer la fila que agrego el usuario
-export const fecthSession = async () => {
+export const fetchSession = async () => {
   try {
     const db = await SQLite.openDatabaseAsync("session.db");
     const sessionUser = await db.getFirstAsync(`SELECT * FROM sessionUser`);
@@ -46,4 +41,12 @@ export const fecthSession = async () => {
 };
 
 //funcion para eliminar
-export const deleteSession = () => {};
+export const deleteSession = async () => {
+  try {
+    const db = await SQLite.openDatabaseAsync("session.db");
+    const deleteSession = await db.runAsync(`DELETE FROM sessionUser `);
+    return deleteSession;
+  } catch (error) {
+    return error;
+  }
+};

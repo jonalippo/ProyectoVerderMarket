@@ -4,19 +4,23 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { colors } from "../../global/Theme";
 import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fecthSession } from "../config/dbSqLite";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../features/userSlice";
+import { fetchSession, init } from "../config/dbSqlite";
 
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
   const idToken = useSelector((state) => state.user.idToken);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
-      const sessionUser = await fecthSession();
-      console.log(sessionUser);
+      const sessionUser = await fetchSession();
+      if (sessionUser) {
+        dispatch(setUser(sessionUser));
+      }
     })();
   }, []);
 

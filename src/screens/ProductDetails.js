@@ -21,7 +21,6 @@ export default function ProductDetails({ route }) {
     navigation.navigate("CartStack");
   };
 
-  console.log(product.images);
   return (
     <View style={styles.container}>
       <Image

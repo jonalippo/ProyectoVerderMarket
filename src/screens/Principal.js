@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function Principal() {
   const navigation = useNavigation();
   const ingresar = () => {
-    navigation.navigate("ShopStack");
+    navigation.navigate("Login");
   };
 
   return (

@@ -36,7 +36,17 @@ const Cart = () => {
   }
 
   if (error) {
-    return <Text>Error al cargar el carrito: {error.message}</Text>;
+    return <Text>{error.message}</Text>;
+  }
+
+  if (cart.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.emptyCartText}>
+          No hay productos en el carrito.
+        </Text>
+      </View>
+    );
   }
 
   return (
@@ -106,5 +116,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
+  },
+
+  emptyCartText: {
+    color: colors.secundary,
+    fontSize: 30,
+    fontWeight: "bold",
+    marginTop: 300,
   },
 });

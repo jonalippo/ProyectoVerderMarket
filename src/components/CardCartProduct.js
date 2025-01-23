@@ -1,10 +1,17 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Counter from "./Counter";
 import { colors } from "../../global/Theme";
+import { useDeleteCartProductMutation } from "../services/cart";
+import { useSelector } from "react-redux";
 
 export default function CardCartProduct({ product }) {
   const { id, images, title, description, price } = product;
+  const localId = useSelector((state) => state.user.localId);
+  const [triggerDeleteItemCart] = useDeleteCartProductMutation();
+  const deleteItemCart = () => {
+    triggerDeleteItemCart({ localId, productId: product.id });
+  };
 
   return (
     <View style={styles.container}>
@@ -21,12 +28,14 @@ export default function CardCartProduct({ product }) {
         </View>
 
         <View style={styles.containerPrice}>
-          <MaterialIcons
-            name="delete"
-            size={35}
-            color="black"
-            style={styles.icon}
-          />
+          <Pressable onPress={deleteItemCart}>
+            <MaterialIcons
+              name="delete"
+              size={35}
+              color="black"
+              style={styles.icon}
+            />
+          </Pressable>
           <Text style={styles.price}>$ {price}</Text>
         </View>
       </View>
