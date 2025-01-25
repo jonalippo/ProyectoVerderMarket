@@ -4,14 +4,14 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { deleteSession } from "../config/dbSqlite";
-import { deletUser } from "../features/userSlice";
+import { deleteUser } from "../features/userSlice";
 
 export default function Header({ title }) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const onLogout = () => {
     deleteSession();
-    dispatch(deletUser());
+    dispatch(deleteUser());
   };
 
   return (

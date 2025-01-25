@@ -1,18 +1,25 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { colors } from "../../global/Theme";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 const CardOrder = ({ order }) => {
-  const date = new Date(order.createdAt).toLocaleString();
   return (
     <View style={styles.container}>
-      <View style={styles.contentText}>
-        <Text style={styles.textFech}>{date}</Text>
-        <Text style={styles.textTotal}>Total: $ {order.total}</Text>
+      <View style={styles.containerDetail}>
+        <Text style={styles.title}>Fecha de compra:</Text>
+        <Text style={styles.textFech}>{order.createdAt}</Text>
+        <Text style={styles.title}>Productos comprados:</Text>
+        <FlatList
+          data={order.products}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.containerProduct}>
+              <Text style={styles.textFech}>• {item.title}</Text>
+              <Text style={styles.textFech}>$ {item.price}</Text>
+            </View>
+          )}
+        />
       </View>
-      <Pressable style={styles.button}>
-        <FontAwesome name="search" size={25} color={colors.primaryAccent} />
-      </Pressable>
+      <Text style={styles.textTotal}>Total: $ {order.total}</Text>
     </View>
   );
 };
@@ -21,17 +28,34 @@ export default CardOrder;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
     backgroundColor: colors.colorText,
     margin: 10,
     padding: 20,
-    justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "flex-start",
     borderRadius: 20,
+    borderWidth: 2,
+    borderColor: colors.primaryAccent,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    position: "relative",
   },
 
-  contentText: {
-    gap: 10,
+  containerDetail: {
+    gap: 8,
+    alignItems: "flex-start",
+    marginBottom: 20,
+  },
+
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  containerProduct: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
   },
 
   textFech: {
@@ -41,5 +65,8 @@ const styles = StyleSheet.create({
   textTotal: {
     fontSize: 20,
     fontWeight: "bold",
+    position: "absolute",
+    bottom: 10,
+    right: 20,
   },
 });

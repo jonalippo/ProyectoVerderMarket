@@ -7,10 +7,12 @@ import { useGetCartQuery } from "../services/cart";
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useDeleteCartMutation } from "../services/cart";
 
 const Cart = () => {
   const navigation = useNavigation();
   const [triggerPost] = usePostOrdersMutation();
+  const [triggeDeleteCart] = useDeleteCartMutation();
   const localId = useSelector((state) => state.user.localId);
   const { data: cart, error, isLoading } = useGetCartQuery({ localId });
   const [total, setTotal] = useState(0);
@@ -27,7 +29,14 @@ const Cart = () => {
   }, [cart]);
 
   const confirmCart = () => {
-    triggerPost({ id: "2", products: [{ id: "2" }], total: 120 });
+    const createdAt = new Date().toLocaleDateString();
+    const order = {
+      products: cart,
+      createdAt,
+      total,
+    };
+    triggerPost({ order, localId });
+    triggeDeleteCart({ localId });
     navigation.navigate("OrderStack");
   };
 

@@ -5,6 +5,7 @@ import Feather from "@expo/vector-icons/Feather";
 import { usePostCartMutation } from "../services/cart";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import Counter from "../components/Counter";
 
 export default function ProductDetails({ route }) {
   const { product } = route.params;
@@ -40,7 +41,8 @@ export default function ProductDetails({ route }) {
         <View style={styles.containerPrice}>
           <Text style={styles.price}>Precio: $ {product.price}</Text>
           <View style={styles.containerCount}>
-            <Pressable>
+            <Counter />
+            {/* <Pressable>
               <Feather
                 name="minus-square"
                 size={40}
@@ -54,7 +56,7 @@ export default function ProductDetails({ route }) {
                 size={40}
                 color={colors.primaryAccent}
               />
-            </Pressable>
+            </Pressable> */}
           </View>
         </View>
       </View>

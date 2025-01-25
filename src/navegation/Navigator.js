@@ -6,8 +6,9 @@ import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../features/userSlice";
-import { fetchSession, init } from "../config/dbSqlite";
+import { deleteUser, setUser } from "../features/userSlice";
+import { fetchSession } from "../config/dbSqlite";
+import { init } from "../config/dbSqlite";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,9 +18,15 @@ const Navigator = () => {
 
   useEffect(() => {
     (async () => {
-      const sessionUser = await fetchSession();
-      if (sessionUser) {
-        dispatch(setUser(sessionUser));
+      try {
+        await init();
+        dispatch(deleteUser());
+        const sessionUser = await fetchSession();
+        if (sessionUser) {
+          dispatch(setUser(sessionUser));
+        }
+      } catch (error) {
+        console.log(error);
       }
     })();
   }, []);

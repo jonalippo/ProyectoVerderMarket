@@ -3,12 +3,9 @@ import { colors } from "./global/Theme";
 import Navigator from "./src/navegation/Navigator";
 import { Provider } from "react-redux";
 import { store } from "./src/store";
-import { init } from "./src/config/dbSqlite";
-import { useEffect } from "react";
+import dotenv from "dotenv";
 
 export default function App() {
-  init();
-
   return (
     <>
       <Provider store={store}>
