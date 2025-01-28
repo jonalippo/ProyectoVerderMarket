@@ -1,7 +1,16 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
 import { colors } from "../../global/Theme";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useDeleteOrderMutation } from "../services/orders";
+import { useSelector } from "react-redux";
 
 const CardOrder = ({ order }) => {
+  const localId = useSelector((state) => state.user.localId);
+  const [triggerDeleteOrder] = useDeleteOrderMutation();
+  const deleteOrder = () => {
+    triggerDeleteOrder({ localId, orderId: order.id });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.containerDetail}>
@@ -11,14 +20,26 @@ const CardOrder = ({ order }) => {
         <FlatList
           data={order.products}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.containerProduct}>
-              <Text style={styles.textFech}>• {item.title}</Text>
-              <Text style={styles.textFech}>$ {item.price}</Text>
-            </View>
-          )}
+          renderItem={({ item }) => {
+            const totalPrice = item.price * item.quantity;
+            return (
+              <View style={styles.containerProduct}>
+                <Text style={styles.textFech}>• {item.title}</Text>
+                <Text style={styles.textFech}>$ {totalPrice}</Text>
+              </View>
+            );
+          }}
         />
       </View>
+
+      <Pressable onPress={deleteOrder}>
+        <MaterialIcons
+          name="delete"
+          size={35}
+          color="black"
+          style={styles.icon}
+        />
+      </Pressable>
       <Text style={styles.textTotal}>Total: $ {order.total}</Text>
     </View>
   );
@@ -68,5 +89,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 10,
     right: 20,
+  },
+
+  icon: {
+    right: 35,
   },
 });

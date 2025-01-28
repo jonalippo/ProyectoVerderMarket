@@ -3,7 +3,6 @@ import { colors } from "./global/Theme";
 import Navigator from "./src/navegation/Navigator";
 import { Provider } from "react-redux";
 import { store } from "./src/store";
-import dotenv from "dotenv";
 
 export default function App() {
   return (

@@ -7,7 +7,11 @@ import Loading from "../components/Loading";
 
 const Orders = () => {
   const localId = useSelector((state) => state.user.localId);
-  const { data: orders, isLoading } = useGetOrderUserQuery({ localId });
+  const {
+    data: orders,
+    refetch,
+    isLoading,
+  } = useGetOrderUserQuery({ localId });
 
   if (isLoading) {
     return <Loading />;

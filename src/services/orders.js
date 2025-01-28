@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const ordersApi = createApi({
   reducerPath: "ordersApi",
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
-  tagTypes: ["newOrders"],
+  tagTypes: ["newOrders", "deleteOrder"],
   endpoints: (builder) => ({
     postOrders: builder.mutation({
       query: ({ order, localId }) => ({
@@ -29,7 +29,19 @@ export const ordersApi = createApi({
       },
       providesTags: ["newOrders"],
     }),
+
+    deleteOrder: builder.mutation({
+      query: ({ localId, orderId }) => ({
+        url: `orders/${localId}/${orderId}.json`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["newOrders"],
+    }),
   }),
 });
 
-export const { usePostOrdersMutation, useGetOrderUserQuery } = ordersApi;
+export const {
+  usePostOrdersMutation,
+  useGetOrderUserQuery,
+  useDeleteOrderMutation,
+} = ordersApi;

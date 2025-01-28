@@ -1,17 +1,17 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import Counter from "./Counter";
 import { colors } from "../../global/Theme";
 import { useDeleteCartProductMutation } from "../services/cart";
 import { useSelector } from "react-redux";
 
 export default function CardCartProduct({ product }) {
-  const { id, images, title, description, price } = product;
+  const { images, title, description, price, quantity } = product;
   const localId = useSelector((state) => state.user.localId);
   const [triggerDeleteItemCart] = useDeleteCartProductMutation();
   const deleteItemCart = () => {
     triggerDeleteItemCart({ localId, productId: product.id });
   };
+  const totalPrice = price * quantity;
 
   return (
     <View style={styles.container}>
@@ -23,8 +23,8 @@ export default function CardCartProduct({ product }) {
         />
         <View style={styles.containerText}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.description}>{description}</Text>
-          <Counter productId={id} />
+          <Text style={styles.description}>▪ {description}</Text>
+          <Text style={styles.description}>▪ Cantidad: {quantity}</Text>
         </View>
 
         <View style={styles.containerPrice}>
@@ -36,7 +36,7 @@ export default function CardCartProduct({ product }) {
               style={styles.icon}
             />
           </Pressable>
-          <Text style={styles.price}>$ {price}</Text>
+          <Text style={styles.price}>$ {totalPrice}</Text>
         </View>
       </View>
     </View>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     height: 180,
     flexDirection: "row",
     padding: 8,
-    gap: 5,
+    gap: 15,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
@@ -70,10 +70,14 @@ const styles = StyleSheet.create({
     maxHeight: 100,
     width: "20vw",
     height: "20vw",
+    borderWidth: 2,
+    borderColor: colors.primaryAccent,
+    borderRadius: 10,
+    marginLeft: 15,
   },
 
   containerText: {
-    width: "60%",
+    width: "50%",
     alignItems: "left",
     gap: 10,
     textAlign: "left",
@@ -87,18 +91,7 @@ const styles = StyleSheet.create({
 
   description: {
     fontSize: 18,
-    width: "80%",
-  },
-
-  containerCount: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-
-  textCount: {
-    fontSize: 25,
-    fontWeight: 800,
+    width: "90%",
   },
 
   containerPrice: {

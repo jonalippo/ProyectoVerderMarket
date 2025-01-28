@@ -1,24 +1,49 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { colors } from "../../global/Theme";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import Feather from "@expo/vector-icons/Feather";
-import { usePostCartMutation } from "../services/cart";
+import { useGetProductCartQuery, usePostCartMutation } from "../services/cart";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import Counter from "../components/Counter";
+import { useState } from "react";
 
 export default function ProductDetails({ route }) {
+  const [quantity, setQuantity] = useState(1);
   const { product } = route.params;
   const navigation = useNavigation();
   const localId = useSelector((state) => state.user.localId);
   const [triggerAddProduct] = usePostCartMutation();
+  const { data: productCart } = useGetProductCartQuery({
+    localId,
+    productId: product.id,
+  });
+
+  const cartQuantity = productCart ? productCart.quantity : 0;
+  const availableStock = product.stock - cartQuantity;
+  const totalPrice = product.price * quantity;
+
+  const increment = () => {
+    if (quantity < availableStock) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const decrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
   const handleAddProduct = async () => {
+    if (availableStock === 0) return; // Previene agregar si no hay stock
+    const newQuantity = quantity + cartQuantity;
+
     const cartProduct = {
       ...product,
-      quantity: 1,
+      quantity: newQuantity,
     };
-    const result = await triggerAddProduct({ localId, cartProduct });
+    await triggerAddProduct({ localId, cartProduct });
+    setQuantity(1);
     navigation.navigate("CartStack");
   };
 
@@ -28,7 +53,6 @@ export default function ProductDetails({ route }) {
         source={{ uri: product.images }}
         style={styles.img}
         resizeMode="contain"
-        onError={() => console.log("Error al cargar la imagen")}
       />
       <View style={styles.containerDetails}>
         <View style={styles.titleHeart}>
@@ -41,26 +65,30 @@ export default function ProductDetails({ route }) {
         <View style={styles.containerPrice}>
           <Text style={styles.price}>Precio: $ {product.price}</Text>
           <View style={styles.containerCount}>
-            <Counter />
-            {/* <Pressable>
-              <Feather
-                name="minus-square"
-                size={40}
-                color={colors.primaryAccent}
-              />
-            </Pressable>
-            <Text style={styles.textCount}>Kg</Text>
-            <Pressable>
-              <Feather
-                name="plus-square"
-                size={40}
-                color={colors.primaryAccent}
-              />
-            </Pressable> */}
+            <Counter
+              quantity={quantity}
+              increment={increment}
+              decrement={decrement}
+            />
           </View>
         </View>
+
+        <Text style={styles.totalText}>Total: $ {totalPrice}</Text>
+
+        {availableStock === 0 && (
+          <Text style={styles.outOfStock}>
+            ¡No hay más unidades disponibles!
+          </Text>
+        )}
       </View>
-      <Pressable style={styles.containerButton} onPress={handleAddProduct}>
+      <Pressable
+        style={[
+          styles.containerButton,
+          availableStock === 0 && styles.disabledButton,
+        ]}
+        onPress={handleAddProduct}
+        disabled={availableStock === 0}
+      >
         <Text style={styles.textButton}>Agregar al carrito</Text>
       </Pressable>
     </View>
@@ -114,7 +142,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     paddingVertical: 20,
-    textAlign: "left",
+    textAlign: "center",
     width: "40%",
   },
 
@@ -130,6 +158,13 @@ const styles = StyleSheet.create({
     right: 30,
     width: "60%",
     gap: 10,
+  },
+
+  totalText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    marginTop: 30,
+    color: colors.primaryAccent,
   },
 
   textCount: {
@@ -152,5 +187,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
+  },
+
+  outOfStock: {
+    color: colors.secundary,
+    fontWeight: 600,
+    fontSize: 22,
+    marginTop: 20,
+    textAlign: "center",
+  },
+
+  disabledButton: {
+    backgroundColor: "#d3d3d3",
   },
 });

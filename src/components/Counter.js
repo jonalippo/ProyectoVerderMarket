@@ -1,42 +1,17 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { colors } from "../../global/Theme";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-} from "../features/conunterSlice";
 import Feather from "@expo/vector-icons/Feather";
 
-const Counter = ({ productId }) => {
-  const [inputAmount, setInputAmount] = useState(0);
-  const counter = useSelector((state) => state.counter[productId]?.value ?? 0);
-  const dispatch = useDispatch();
-
+const Counter = ({ quantity, increment, decrement }) => {
   return (
     <View style={styles.containerCount}>
-      <Pressable onPress={() => dispatch(decrement(productId))}>
-        <Feather name="minus-square" size={30} color={colors.primaryAccent} />
+      <Pressable onPress={decrement}>
+        <Feather name="minus-square" size={50} color={colors.primary} />
       </Pressable>
-
-      <Text style={styles.textCount}>{counter}</Text>
-
-      <Pressable onPress={() => dispatch(increment(productId))}>
-        <Feather name="plus-square" size={30} color={colors.primaryAccent} />
+      <Text style={styles.textCount}>{quantity}</Text>
+      <Pressable onPress={increment}>
+        <Feather name="plus-square" size={50} color={colors.primary} />
       </Pressable>
-
-      {/* <TextInput
-        value={inputAmount}
-        onChangeText={(t) => setInputAmount(parseInt(t))}
-      />
-      <Pressable
-        onPress={() =>
-          dispatch(incrementByAmount({ id: productId, amount: inputAmount }))
-        }
-      >
-        <Text>Cambiar</Text>
-      </Pressable> */}
     </View>
   );
 };
