@@ -35,7 +35,7 @@ export default function ProductDetails({ route }) {
   };
 
   const handleAddProduct = async () => {
-    if (availableStock === 0) return; // Previene agregar si no hay stock
+    if (availableStock === 0) return;
     const newQuantity = quantity + cartQuantity;
 
     const cartProduct = {

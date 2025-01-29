@@ -18,14 +18,14 @@ const Categories = () => {
         <FontAwesome name="spinner" size={50} color="black" />
         <Text style={styles.textLoading}>Cargando</Text>
       </View>
-    ); //msj cargando
+    );
 
   if (isError)
     return (
       <View>
         <Text>{error.message}</Text>
       </View>
-    ); //msj de error, sin estilos
+    );
 
   return (
     <View style={styles.container}>
