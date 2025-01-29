@@ -4,9 +4,9 @@ const Banner = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../../assets/Banner1.png")}
+        source={require("../../assets/banner2.1.png")}
         style={styles.img}
-        resizeMode="cover"
+        resizeMode="contain"
       />
     </View>
   );
@@ -16,7 +16,7 @@ export default Banner;
 
 const styles = StyleSheet.create({
   container: {
-    height: 150,
+    height: 200,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 30,

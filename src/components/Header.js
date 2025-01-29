@@ -16,9 +16,12 @@ export default function Header({ title }) {
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.goBack} onPress={() => navigation.goBack()}>
-        <AntDesign name="leftcircle" size={25} color="white" />
-      </Pressable>
+      {title != "Home" ? (
+        <Pressable style={styles.goBack} onPress={() => navigation.goBack()}>
+          <AntDesign name="leftcircle" size={25} color="white" />
+        </Pressable>
+      ) : null}
+
       <Text style={styles.text}>{title}</Text>
       <Pressable style={styles.logout} onPress={onLogout}>
         <AntDesign name="logout" size={25} color="white" />

@@ -1,5 +1,4 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { colors } from "../../global/Theme";
 
 const Loading = () => {

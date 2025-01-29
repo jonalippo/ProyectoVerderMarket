@@ -73,12 +73,11 @@ const Login = () => {
         />
 
         <SubmitButton onPress={onSubmit} title="Ingresar" />
-        <Text style={styles.submit}>Registrar una nueva cuenta</Text>
         <Pressable
           style={styles.buttonSubmit}
           onPress={() => navigation.navigate("Signup")}
         >
-          <Text style={styles.textButton}>Registrarme</Text>
+          <Text style={styles.textButton}>Registrar nueva cuenta</Text>
         </Pressable>
       </View>
     </View>
@@ -117,24 +116,18 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
 
-  submit: {
-    fontSize: 18,
-    color: colors.secundary,
-    top: 10,
-  },
-
   buttonSubmit: {
     backgroundColor: colors.secundary,
-    paddingVertical: 10,
+    paddingVertical: 12,
     alignItems: "center",
-    width: "30%",
+    width: "60%",
     borderRadius: 20,
     top: 30,
   },
 
   textButton: {
     color: "white",
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
   },
