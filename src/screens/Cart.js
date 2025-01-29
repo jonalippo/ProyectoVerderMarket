@@ -68,9 +68,8 @@ const Cart = () => {
       />
       <View style={styles.containerTotal}>
         <Text style={styles.text}>Total: ${total}</Text>
-
         <Pressable style={styles.containerButton} onPress={confirmCart}>
-          <Text style={styles.textButton}>Verificar</Text>
+          <Text style={styles.textButton}>Finalizar compra</Text>
         </Pressable>
       </View>
     </View>

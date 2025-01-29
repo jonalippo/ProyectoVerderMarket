@@ -1,13 +1,6 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const images = {
-  1: require("../../assets/frutas.png"),
-  2: require("../../assets/verduras.png"),
-  3: require("../../assets/congelados1.png"),
-  4: require("../../assets/especias.png"),
-};
-
 const ItemCategory = ({ item: category }) => {
   const navigation = useNavigation();
 
@@ -16,7 +9,11 @@ const ItemCategory = ({ item: category }) => {
       <Pressable
         onPress={() => navigation.navigate("ProductsCategory", { category })}
       >
-        <Image source={images[category.id]} style={styles.img} />
+        <Image
+          source={{ uri: category.img }}
+          style={styles.img}
+          resizeMode="contain"
+        />
         <Text style={styles.text}>{category.title}</Text>
       </Pressable>
     </View>

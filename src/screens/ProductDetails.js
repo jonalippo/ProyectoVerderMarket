@@ -54,6 +54,7 @@ export default function ProductDetails({ route }) {
         style={styles.img}
         resizeMode="contain"
       />
+
       <View style={styles.containerDetails}>
         <View style={styles.titleHeart}>
           <Text style={styles.title}>{product.title}</Text>

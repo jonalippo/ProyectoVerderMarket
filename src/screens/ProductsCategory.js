@@ -34,7 +34,7 @@ export default function ProductsCategory({ route }) {
       </View>
     );
 
-  if (isLoading) return <Loading />; //msj cargando
+  if (isLoading) return <Loading />;
 
   return (
     <View style={styles.container}>
