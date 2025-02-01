@@ -21,27 +21,53 @@ const Login = () => {
 
   const onSubmit = async () => {
     try {
-      loginSchema.validateSync({ email, password });
-      const response = await triggerLogin({ email, password });
+      const response = await triggerLogin({ email, password }).unwrap();
 
-      const user = {
-        email: response.data.email,
-        idToken: response.data.idToken,
-        localId: response.data.localId,
-      };
-      dispatch(setUser(user));
-      await deleteSession();
-      await insertSession(user.localId, user.email, user.idToken);
+      if (response && response.idToken) {
+        const user = {
+          email: response.email,
+          idToken: response.idToken,
+          localId: response.localId,
+        };
+
+        dispatch(setUser(user));
+        await deleteSession();
+        await insertSession(user.localId, user.email, user.idToken);
+
+        setEmailError("");
+        setPasswordError("");
+      } else {
+        setEmailError("");
+        setPasswordError("Error al iniciar sesión. Intente nuevamente.");
+      }
     } catch (error) {
-      switch (error.path) {
-        case "email":
-          setEmailError(error.message);
-          setPasswordError("");
-          break;
-        case "password":
-          setPasswordError(error.message);
+      if (error.name === "ValidationError") {
+        switch (error.path) {
+          case "email":
+            setEmailError(error.message);
+            setPasswordError("");
+            break;
+          case "password":
+            setPasswordError(error.message);
+            setEmailError("");
+            break;
+        }
+      } else if (error?.status === 400 || error?.status === 401) {
+        const errorMessage = error?.data?.error?.message;
+
+        if (errorMessage === "INVALID_PASSWORD") {
+          setPasswordError("Contraseña incorrecta.");
           setEmailError("");
-          break;
+        } else if (errorMessage === "EMAIL_NOT_FOUND") {
+          setEmailError("Usuario no registrado.");
+          setPasswordError("");
+        } else {
+          setEmailError("");
+          setPasswordError("Error al iniciar sesión. Intente nuevamente.");
+        }
+      } else {
+        setEmailError("");
+        setPasswordError("Ocurrió un error inesperado. Intente más tarde.");
       }
     }
   };

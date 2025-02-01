@@ -1,11 +1,20 @@
 # E-Commerce App - VerdeMarket
 
-Se desarrollo un aplicacion mobile con React Native, sobre un ecommerce, donde la idea esta basada en una fruteria y verduleria online. En la misma el usuario podra navegar por las distintas pantanllas de la aplicacion, buscando los productos deseados y realizando la compra final.
+Se desarrollo un aplicacion mobile con React Native, sobre un ecommerce. El objetivo del mismo fue poder aplicar todos los conocimientos adquiridos en las distintas clases del curso.
 
-Tambien posee el sistema de autenticación de Firebase para gestionar el acceso de usuarios. Permitiendo a estos iniciar sesión y registrarse de manera segura.
-En este servicio tambein se van a guardar los carritos y ordenes de cada usuario, identificados cada uno por un id unico.
+La idea de este ecommercedonde esta basada en una fruteria y verduleria online "VerdeMArket". En la misma el usuario podra navegar por las distintas pantanllas de la aplicacion, buscando los productos deseados y realizando la compra final.
+
+Tambien posee un sistema de autenticación de Firebase para gestionar el acceso de usuarios. Permitiendo a estos iniciar sesión y registrarse de manera segura.
+En este servicio tambien se van a guardar los carritos y ordenes de cada usuario, identificados cada uno por un id unico.
 
 ## Funcionalidades Principales
+
+Las funciones principales de la aplicacion son:
+
+- Permitir el acceso a travez de un logueo,
+- Navegar por las distintas categorias y o productos.
+- Efectuar una seleccion y compra, que luego nos llevara a generar una orden con los detalles de la compra.
+- Tambien cuenta con una pantalla de perfil, donde el usuario podra cambiar su foto de perfil, y fijar una direccion (localizacion).
 
 ### Pantalla de Cuenta o Login
 
