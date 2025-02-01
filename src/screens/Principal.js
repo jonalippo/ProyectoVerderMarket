@@ -20,7 +20,7 @@ export default function Principal() {
       <ImageBackground
         style={style.imgContainer}
         resizeMode="cover"
-        source={require("../../assets/imageBackground2.jpg")}
+        source={require("../../assets/imageBackground2.png")}
       >
         <Image
           style={style.imgLogo}
